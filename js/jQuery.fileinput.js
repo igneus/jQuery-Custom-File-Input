@@ -4,14 +4,14 @@
  * Author: Scott Jehl, scott@filamentgroup.com
  * Copyright (c) 2009 Filament Group 
  * licensed under MIT (filamentgroup.com/examples/mit-license.txt)
+ * 
+ * modified 2013 by Jakub Pavlík
  * --------------------------------------------------------------------
  */
 $.fn.customFileInput = function(){
 	//apply events and styles for file input element
 	var fileInput = $(this)
 		.addClass('customfile-input') //add class for CSS
-		.mouseover(function(){ upload.addClass('customfile-hover'); })
-		.mouseout(function(){ upload.removeClass('customfile-hover'); })
 		.focus(function(){
 			upload.addClass('customfile-focus'); 
 			fileInput.data('val', fileInput.val());
@@ -46,7 +46,7 @@ $.fn.customFileInput = function(){
 				.data('fileExt', fileExt) //store file extension for class removal on next change
 				.addClass('customfile-feedback-populated'); //add class to show populated state
 			//change text of button	
-			uploadButton.text('Change');	
+			// uploadButton.text('Change');	
 		})
 		.click(function(){ //for IE and Opera, make sure change fires after choosing a file, using an async callback
 			fileInput.data('val', fileInput.val());
@@ -59,6 +59,10 @@ $.fn.customFileInput = function(){
 	var upload = $('<div class="customfile"></div>');
 	//create custom control button
 	var uploadButton = $('<span class="customfile-button" aria-hidden="true">Browse</span>').appendTo(upload);
+	uploadButton.mouseover(function(){ upload.addClass('customfile-hover'); })
+	.mouseout(function(){ upload.removeClass('customfile-hover'); })
+	.click(function(){ fileInput.trigger('click'); });
+
 	//create custom control feedback
 	var uploadFeedback = $('<span class="customfile-feedback" aria-hidden="true">No file selected...</span>').appendTo(upload);
 	
@@ -67,16 +71,7 @@ $.fn.customFileInput = function(){
 		fileInput.trigger('disable');
 	}
 		
-	
-	//on mousemove, keep file input under the cursor to steal click
-	upload
-		.mousemove(function(e){
-			fileInput.css({
-				'left': e.pageX - upload.offset().left - fileInput.outerWidth() + 20, //position right side 20px right of cursor X)
-				'top': e.pageY - upload.offset().top - $(window).scrollTop() - 3
-			});	
-		})
-		.insertAfter(fileInput); //insert after the input
+	upload.insertAfter(fileInput); //insert after the input
 	
 	fileInput.appendTo(upload);
 		

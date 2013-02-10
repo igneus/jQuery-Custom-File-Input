@@ -1,10 +1,17 @@
+A JQuery-based stylable replacement of the 'file' html input element.
+Based on the code of the forked repository.
+I stripped it of all the unnecessary css-candy and javascript code I didn't
+need to make it ready to reuse.
+The most important feature of the modification is that the invisible
+input is never more moved around with the mouse pointer, but stays on
+it's place, filling it's fake replacement.
+
 Code Examples from the book [Designing with Progressive Enhancement](http://filamentgroup.com/dwpe)
 ================================
 
 This repository includes open-sourced code developed and maintained by Filament Group, Inc. as part of the book "Designing With Progressive Enhancement" (Peachpit).
 
-Those who purchase the book can access all of the examples from the book at the following URL: http://filamentgroup.com/dwpe#codeexamples.
+...
 
-All examples use the [jQuery JavaScript library](http://jquery.com).
-
-These code examples use the [EnhanceJS framework](https://github.com/filamentgroup/EnhanceJS) for applying progressive enhancement based on browser capabilities testing.
+(see the rest, irrelevant here, in the original repository:
+https://github.com/filamentgroup/jQuery-Custom-File-Input)
